@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c1ad09a2-c50d-411d-a7b7-a0f5d1311759" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DiningPhilosophers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DiningPhilosophers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Monitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Monitor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Philosopher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Philosopher.java" afterDir="false" />
     </list>
@@ -27,26 +25,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DiningPhilosophers.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
+            <state relative-caret-position="-113">
               <caret line="53" column="12" lean-forward="true" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="12" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Monitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="64" selection-start-line="64" selection-end-line="64" />
+            <state relative-caret-position="193">
+              <caret line="53" column="32" selection-start-line="53" selection-start-column="32" selection-end-line="53" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Philosopher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1247">
-              <caret line="90" column="24" selection-start-line="90" selection-start-column="24" selection-end-line="90" selection-end-column="24" />
+            <state relative-caret-position="253">
+              <caret line="116" column="59" selection-start-line="116" selection-start-column="59" selection-end-line="116" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -71,9 +69,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Monitor.java" />
         <option value="$PROJECT_DIR$/src/DiningPhilosophers.java" />
         <option value="$PROJECT_DIR$/src/Philosopher.java" />
+        <option value="$PROJECT_DIR$/src/Monitor.java" />
       </list>
     </option>
   </component>
@@ -169,18 +167,19 @@
       <option name="presentableId" value="Default" />
       <updated>1585434823474</updated>
       <workItem from="1585434826680" duration="1528000" />
-      <workItem from="1585526974311" duration="10961000" />
+      <workItem from="1585526974311" duration="13105000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12489000" />
+    <option name="totallyTimeSpent" value="14633000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4978903" visible="true" weight="0.25302014" />
-      <window_info id="Structure" order="1" sideWeight="0.5021097" side_tool="true" visible="true" weight="0.25302014" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4976415" visible="true" weight="0.25302014" />
+      <window_info id="Structure" order="1" sideWeight="0.5023585" side_tool="true" visible="true" weight="0.25302014" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
@@ -188,8 +187,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3286119" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3286119" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39943343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -219,7 +218,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Monitor.java</url>
-          <line>64</line>
+          <line>72</line>
           <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
@@ -234,9 +233,6 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Main.java" />
-    <entry file="file://$PROJECT_DIR$/src/Makefile">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/common/BaseThread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -249,22 +245,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DiningPhilosophers.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
+        <state relative-caret-position="-113">
           <caret line="53" column="12" lean-forward="true" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-247" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Philosopher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="116" column="59" selection-start-line="116" selection-start-column="59" selection-end-line="116" selection-end-column="59" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Monitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="64" selection-start-line="64" selection-end-line="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Philosopher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1247">
-          <caret line="90" column="24" selection-start-line="90" selection-start-column="24" selection-end-line="90" selection-end-column="24" />
+        <state relative-caret-position="193">
+          <caret line="53" column="32" selection-start-line="53" selection-start-column="32" selection-end-line="53" selection-end-column="32" />
         </state>
       </provider>
     </entry>

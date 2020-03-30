@@ -43,7 +43,15 @@ public class Monitor
 
 	private void test(final int piTID){
 
-		if((state[(piTID - 1) % N] != status.eating) && (state[piTID] == status.hungry) && (state[(piTID + 1) % N] != status.eating)){
+		int specialCaseNb = 0;
+
+		if(piTID == 0){
+			specialCaseNb = N;
+		}else{
+			specialCaseNb = piTID;
+		}
+
+		if((state[(specialCaseNb - 1) % N] != status.eating) && (state[piTID] == status.hungry) && (state[(piTID + 1) % N] != status.eating)){
 			state[piTID] = status.eating;
 			this.notifyAll();
 //			try {
