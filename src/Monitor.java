@@ -14,7 +14,7 @@ public class Monitor
 	 * ------------
 	 */
 
-	private enum status {eating, hungry, thinking}
+	private enum status {eating, hungry, thinking,talking}
 	private status state [];
 	//private Semaphore self [];
 	private int N;
@@ -41,7 +41,7 @@ public class Monitor
 	 * -------------------------------
 	 */
 
-	private void test(final int piTID){
+	private synchronized void test(final int piTID){
 
 		int specialCaseNb = 0;
 
@@ -70,7 +70,7 @@ public class Monitor
 	 */
 	public synchronized void pickUp(final int piTID)
 	{
-		System.out.println("piTID: "+piTID+"\n");
+		//SSystem.out.println("piTID: "+piTID+"\n");
 
 		state[piTID] = status.hungry;
 		test(piTID);

@@ -29,11 +29,11 @@ public class Philosopher extends BaseThread
 
 		try
 		{
-			while(true){
-				Thread.yield();
+			//while(true){
+				yield();
 				sleep((long)(Math.random() * TIME_TO_WASTE));
-				Thread.yield();
-			}
+				yield();
+			//}
 		}
 		catch(InterruptedException e)
 		{
@@ -57,11 +57,11 @@ public class Philosopher extends BaseThread
 
 		try
 		{
-			while(true){
-				Thread.yield();
+			//while(true){
+				yield();
 				sleep((long)(Math.random() * TIME_TO_WASTE));
-				Thread.yield();
-			}
+				yield();
+			//}
 		}
 		catch(InterruptedException e)
 		{
@@ -88,12 +88,12 @@ public class Philosopher extends BaseThread
 
 		try
 		{
-			while(true){
-				Thread.yield();
+			//while(true){
+				yield();
 				sleep((long)(Math.random() * TIME_TO_WASTE));
 				saySomething();
-				Thread.yield();
-			}
+				yield();
+			//}
 		}
 		catch(InterruptedException e)
 		{
