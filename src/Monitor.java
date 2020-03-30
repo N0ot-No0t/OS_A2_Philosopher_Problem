@@ -72,6 +72,8 @@ public class Monitor
 				this.wait();
 			}catch (InterruptedException ie){
 
+				DiningPhilosophers.reportException(ie);
+
 			}
 		}
 
