@@ -13,6 +13,7 @@ public class Philosopher extends BaseThread
 	 */
 	public static final long TIME_TO_WASTE = 1000;
 
+
 	/**
 	 * The act of eating.
 	 * - Print the fact that a given phil (their TID) has started eating.
@@ -23,11 +24,14 @@ public class Philosopher extends BaseThread
 	 */
 	public void eat()
 	{
+
+		System.out.println("Philosopher ["+getTID()+"] is eating...");
+
 		try
 		{
-			// ...
+			Thread.yield();
 			sleep((long)(Math.random() * TIME_TO_WASTE));
-			// ...
+			Thread.yield();
 		}
 		catch(InterruptedException e)
 		{
@@ -47,7 +51,21 @@ public class Philosopher extends BaseThread
 	 */
 	public void think()
 	{
-		// ...
+		System.out.println("Philosopher ["+getTID()+"] is thinking...");
+
+		try
+		{
+			Thread.yield();
+			sleep((long)(Math.random() * TIME_TO_WASTE));
+			Thread.yield();
+		}
+		catch(InterruptedException e)
+		{
+			System.err.println("Philosopher.eat():");
+			DiningPhilosophers.reportException(e);
+			System.exit(1);
+		}
+
 	}
 
 	/**
@@ -60,11 +78,23 @@ public class Philosopher extends BaseThread
 	 */
 	public void talk()
 	{
-		// ...
+		System.out.println("Philosopher ["+getTID()+"] is talking...");
 
-		saySomething();
 
-		// ...
+
+		try
+		{
+			Thread.yield();
+			sleep((long)(Math.random() * TIME_TO_WASTE));
+			saySomething();
+			Thread.yield();
+		}
+		catch(InterruptedException e)
+		{
+			System.err.println("Philosopher.eat():");
+			DiningPhilosophers.reportException(e);
+			System.exit(1);
+		}
 	}
 
 	/**
