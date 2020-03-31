@@ -94,7 +94,16 @@ public class Monitor
 	public synchronized void putDown(final int piTID)
 	{
 		state[piTID] = status.thinking;
-		test((piTID - 1) % N);
+
+		int specialCaseNb = 0;
+
+		if(piTID == 0){
+			specialCaseNb = N;
+		}else{
+			specialCaseNb = piTID;
+		}
+
+		test((specialCaseNb - 1) % N);
 		test((piTID + 1) % N);
 	}
 
