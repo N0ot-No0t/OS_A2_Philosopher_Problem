@@ -51,6 +51,21 @@ public class Monitor
 			specialCaseNb = piTID;
 		}
 
+		System.out.println("\n****");
+		System.out.println("pid:  " + piTID);
+		System.out.println("left neighbor status: (state[(specialCaseNb - 1) % N], result: " + (state[(specialCaseNb - 1) % N]));
+		System.out.println("status that is checked: status.eating, result: " + status.eating);
+		System.out.println("condition#1: (state[(specialCaseNb - 1) % N] != status.eating, result: " + (state[(specialCaseNb - 1) % N] != status.eating));
+		System.out.println("-------");
+		System.out.println("myself status: state[piTID], result: " + state[piTID]);
+		System.out.println("status that is checked: status.hungry, result: " + status.hungry);
+		System.out.println("condition#2: state[piTID] == status.hungry, result: " + (state[piTID] == status.hungry));
+		System.out.println("-------");
+		System.out.println("right neighbor status: state[(piTID + 1) % N], result: " + state[(piTID + 1) % N]);
+		System.out.println("status that is checked: status.eating, result: " + status.eating);
+		System.out.println("condition#3: state[(piTID + 1) % N] != status.eating), result: " + (state[(piTID + 1) % N] != status.eating));
+		System.out.println("****\n");
+
 		if((state[(specialCaseNb - 1) % N] != status.eating) && (state[piTID] == status.hungry) && (state[(piTID + 1) % N] != status.eating)){
 			state[piTID] = status.eating;
 			this.notifyAll();
