@@ -25,7 +25,7 @@ public class Philosopher extends BaseThread
 	public void eat()
 	{
 
-		System.out.println("Philosopher ["+getTID()+"] is eating...");
+		System.out.println("Inside eat method %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Philosopher ["+(getTID()-1)+"] is eating...");
 
 		try
 		{
@@ -53,7 +53,7 @@ public class Philosopher extends BaseThread
 	 */
 	public void think()
 	{
-		System.out.println("Philosopher ["+getTID()+"] is thinking...");
+		System.out.println("Philosopher ["+(getTID()-1)+"] is thinking...");
 
 		try
 		{
@@ -82,7 +82,7 @@ public class Philosopher extends BaseThread
 	 */
 	public void talk()
 	{
-		System.out.println("Philosopher ["+getTID()+"] is talking...");
+		System.out.println("Philosopher ["+(getTID()-1)+"] is talking...");
 
 
 
@@ -146,12 +146,12 @@ public class Philosopher extends BaseThread
 			"You know, true is false and false is true if you think of it",
 			"2 + 2 = 5 for extremely large values of 2...",
 			"If thee cannot speak, thee must be silent",
-			"My number is " + getTID() + ""
+			"My number is " + (getTID()-1) + ""
 		};
 
 		System.out.println
 		(
-			"Philosopher " + getTID() + " says: " +
+			"Philosopher " + (getTID()-1) + " says: " +
 			astrPhrases[(int)(Math.random() * astrPhrases.length)]
 		);
 	}
