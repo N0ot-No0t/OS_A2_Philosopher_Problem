@@ -6,52 +6,53 @@ import java.util.concurrent.Semaphore;
  *
  * @author Serguei A. Mokhov, mokhov@cs.concordia.ca
  */
-public class Monitor
-{
-	/*
-	 * ------------
-	 * Data members
-	 * ------------
-	 */
+public class Monitor {
+    /*
+     * ------------
+     * Data members
+     * ------------
+     */
 
-	private enum status {eating, hungry, thinking,talking}
-	private status state [];
-	//private Semaphore self [];
-	private int N;
+    private enum status {eating, hungry, thinking}
+    private enum talk {request_talk, talking, end_talking}
+    private boolean someoneIsTalking = false;
 
-	/**
-	 * Constructor
-	 */
-	public Monitor(int piNumberOfPhilosophers)
-	{
-		// TODO: set appropriate number of chopsticks based on the # of philosophers
+    private status state[];
+    //private Semaphore self [];
+    private int N;
 
-		state = new status[piNumberOfPhilosophers];
-		for(int i = 0; i < piNumberOfPhilosophers; i++){
-			state[i] = status.thinking;
-		}
-		//self = new Semaphore[piNumberOfPhilosophers];
-		N = piNumberOfPhilosophers;
+    /**
+     * Constructor
+     */
+    public Monitor(int piNumberOfPhilosophers) {
+        // TODO: set appropriate number of chopsticks based on the # of philosophers
 
-	}
+        state = new status[piNumberOfPhilosophers];
+        for (int i = 0; i < piNumberOfPhilosophers; i++) {
+            state[i] = status.thinking;
+        }
+        //self = new Semaphore[piNumberOfPhilosophers];
+        N = piNumberOfPhilosophers;
 
-	/*
-	 * -------------------------------
-	 * User-defined monitor procedures
-	 * -------------------------------
-	 */
+    }
 
-	private synchronized void test(final int piTID){
+    /*
+     * -------------------------------
+     * User-defined monitor procedures
+     * -------------------------------
+     */
 
-		int specialCaseNb = 0;
+    private synchronized void testEat(final int piTID) {
 
-		if(piTID == 0){
-			specialCaseNb = N;
-		}else{
-			specialCaseNb = piTID;
-		}
+        int specialCaseNb = 0;
 
-		System.out.println("\n****");
+        if (piTID == 0) {
+            specialCaseNb = N;
+        } else {
+            specialCaseNb = piTID;
+        }
+
+		/*System.out.println("\n****");
 		System.out.println("pid:  " + piTID);
 		System.out.println("left neighbor status: (state[(specialCaseNb - 1) % N], left neighbor pid: " + (specialCaseNb - 1) % N + ", result: " + (state[(specialCaseNb - 1) % N]));
 		System.out.println("status that is checked: status.eating, result: " + status.eating);
@@ -64,84 +65,98 @@ public class Monitor
 		System.out.println("right neighbor status: state[(piTID + 1) % N], right neighbor pid: " + (piTID + 1) % N + ", result: " + state[(piTID + 1) % N]);
 		System.out.println("status that is checked: status.eating, result: " + status.eating);
 		System.out.println("condition#3: state[(piTID + 1) % N] != status.eating), result: " + (state[(piTID + 1) % N] != status.eating));
-		System.out.println("****\n");
+		System.out.println("****\n");*/
 
-		if((state[(specialCaseNb - 1) % N] != status.eating) && (state[piTID] == status.hungry) && (state[(piTID + 1) % N] != status.eating)){
+        while ((state[(specialCaseNb - 1) % N] != status.eating) && (state[piTID] == status.hungry) && (state[(piTID + 1) % N] != status.eating)) {
 
-			System.out.println("Inside test method ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Philosopher ["+piTID+"] is eating...");
+            //System.out.println("Inside test method ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Philosopher ["+piTID+"] is eating...");
 
-			state[piTID] = status.eating;
-			this.notifyAll();
+            state[piTID] = status.eating;
+            //notifyAll();
 //			try {
 //				self[piTID].acquire();
 //			}catch (InterruptedException ie){
 //
 //			}
 
-		}
+        }
 
-	}
+    }
 
-	/**
-	 * Grants request (returns) to eat when both chopsticks/forks are available.
-	 * Else forces the philosopher to wait()
-	 */
-	public synchronized void pickUp(final int piTID)
-	{
-		//SSystem.out.println("piTID: "+piTID+"\n");
+    private synchronized void testTalk(final int piTID){
 
-		state[piTID] = status.hungry;
-		test(piTID);
-		if(state[piTID] != status.eating){
-			try {
-				//self[piTID].wait();
-				this.wait();
-			}catch (InterruptedException ie){
+        int specialCaseNb = 0;
 
-				DiningPhilosophers.reportException(ie);
+        if (piTID == 0) {
+            specialCaseNb = N;
+        } else {
+            specialCaseNb = piTID;
+        }
 
-			}
-		}
 
-	}
 
-	/**
-	 * When a given philosopher's done eating, they put the chopstiks/forks down
-	 * and let others know they are available.
-	 */
-	public synchronized void putDown(final int piTID)
-	{
-		state[piTID] = status.thinking;
+    }
 
-		int specialCaseNb = 0;
+    /**
+     * Grants request (returns) to eat when both chopsticks/forks are available.
+     * Else forces the philosopher to wait()
+     */
+    public synchronized void pickUp(final int piTID) {
+        //SSystem.out.println("piTID: "+piTID+"\n");
 
-		if(piTID == 0){
-			specialCaseNb = N;
-		}else{
-			specialCaseNb = piTID;
-		}
+        state[piTID] = status.hungry;
+        testEat(piTID);
+        while (state[piTID] != status.eating) {
+            try {
+                //self[piTID].wait();
+                wait();
+            } catch (InterruptedException ie) {
 
-		test((specialCaseNb - 1) % N);
-		test((piTID + 1) % N);
-	}
+                DiningPhilosophers.reportException(ie);
 
-	/**
-	 * Only one philopher at a time is allowed to philosophy
-	 * (while she is not eating).
-	 */
-	public synchronized void requestTalk()
-	{
-		// ...
-	}
+            }
+        }
 
-	/**
-	 * When one philosopher is done talking stuff, others
-	 * can feel free to start talking.
-	 */
-	public synchronized void endTalk()
-	{
-		// ...
-	}
+    }
+
+    /**
+     * When a given philosopher's done eating, they put the chopstiks/forks down
+     * and let others know they are available.
+     */
+    public synchronized void putDown(final int piTID) {
+        state[piTID] = status.thinking;
+
+        int specialCaseNb = 0;
+
+        //if you are the first philosopher and you check on your left, the neighbor
+        // must be the last philosopher of the array (round table)
+        if (piTID == 0) {
+            specialCaseNb = N;
+        } else {
+            specialCaseNb = piTID;
+        }
+
+        testEat((specialCaseNb - 1) % N);
+        testEat((piTID + 1) % N);
+
+        notifyAll();
+    }
+
+    /**
+     * Only one philopher at a time is allowed to philosophy
+     * (while she is not eating).
+     */
+    public synchronized void requestTalk() {
+
+    }
+
+    /**
+     * When one philosopher is done talking stuff, others
+     * can feel free to start talking.
+     */
+    public synchronized void endTalk() {
+
+    }
 }
 
 // EOF
