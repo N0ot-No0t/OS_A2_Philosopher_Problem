@@ -1,5 +1,3 @@
-import java.util.concurrent.Semaphore;
-
 /**
  * Class Monitor
  * To synchronize dining philosophers.
@@ -69,10 +67,15 @@ public class Monitor {
 		System.out.println("condition#3: state[(piTID + 1) % N] != status.eating), result: " + (state[(piTID + 1) % N] != status.eating));
 		System.out.println("****\n");*/
 
+
+        //This if statement checks two things, if the left and right neighbors of the philosopher that is being test are eating and if the
+        //philosopher that is being tested is hungry. If one of these conditions fail, then the philosopher cannot eat. If all these conditions
+        //are met, then the philosopher will eat.
         if ((state[(specialCaseNb - 1) % N] != status.eating) && (state[piTID] == status.hungry) && (state[(piTID + 1) % N] != status.eating)) {
 
             //System.out.println("Inside test method ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Philosopher ["+piTID+"] is eating...");
 
+            //The state of the philosopher that is being tested is set to eating since they can now eat.
             state[piTID] = status.eating;
 
         }
@@ -102,8 +105,15 @@ public class Monitor {
     public synchronized void pickUp(final int piTID) {
         //System.out.println("piTID: "+piTID+"\n");
 
+        //You want to pick up the chopsticks since you are hungry so set your own state as hungry.
         state[piTID] = status.hungry;
+
+        //You want to see if your left and right neighbors are eating which will decide if you can eat or not.
         testEat(piTID);
+
+        //To enter in this while, you must have failed the if statement in the testEat method meaning that either your left
+        //neighbor is eating, or your right neighbor is eating. In that case, you wait until someone notifies you so that
+        //you make check if someone tested you and changed your status from hungry to eating.
         while (state[piTID] != status.eating) {
             try {
                 wait();
@@ -133,6 +143,9 @@ public class Monitor {
             specialCaseNb = piTID;
         }
 
+        //In this case, since you are done eating, you now want to see if your left and right neighbors can eat.
+        //If they can and they are hungry, then you will update their status to eating and you will then notify them
+        //which will make them wake up, check their own statuses, and go eat if their status is eating.
         testEat((specialCaseNb - 1) % N);
         testEat((piTID + 1) % N);
 
