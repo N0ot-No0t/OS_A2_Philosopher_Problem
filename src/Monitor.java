@@ -12,10 +12,11 @@ public class Monitor {
      */
 
     private enum status {eating, hungry, thinking}
-    private enum talk {request_talk, talking, end_talking}
+    private enum talkStatus {not_talking,request_talk, talking, end_talking}
     private boolean someoneIsTalking = false;
 
     private status state[];
+    private talkStatus talkStates[];
     //private Semaphore self [];
     private int N;
 
@@ -28,6 +29,10 @@ public class Monitor {
         state = new status[piNumberOfPhilosophers];
         for (int i = 0; i < piNumberOfPhilosophers; i++) {
             state[i] = status.thinking;
+        }
+        talkStates = new talkStatus[piNumberOfPhilosophers];
+        for (int i = 0; i < piNumberOfPhilosophers; i++) {
+            talkStates[i] = talkStatus.not_talking;
         }
         //self = new Semaphore[piNumberOfPhilosophers];
         N = piNumberOfPhilosophers;
@@ -153,10 +158,21 @@ public class Monitor {
     }
 
     /**
-     * Only one philopher at a time is allowed to philosophy
+     * Only one philosopher at a time is allowed to philosophy
      * (while she is not eating).
      */
     public synchronized void requestTalk() {
+
+        if(!someoneIsTalking){
+            someoneIsTalking = true;
+        }else{
+            try{
+                wait();
+            }catch (InterruptedException ie){
+                DiningPhilosophers.reportException(ie);
+            }
+            
+        }
 
     }
 
@@ -165,6 +181,8 @@ public class Monitor {
      * can feel free to start talking.
      */
     public synchronized void endTalk() {
+
+        someoneIsTalking = false;
 
     }
 }
