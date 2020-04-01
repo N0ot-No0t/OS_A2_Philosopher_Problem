@@ -29,7 +29,7 @@ gitignore/Global/JetBrains.gitignore
 
 .idea/
 out/
-OS_A2_Philosopher_Problem.iml
+*.iml
 
 # User-specific stuff
 .idea/**/workspace.xml
