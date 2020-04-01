@@ -119,9 +119,17 @@ public class Philosopher extends BaseThread {
              * philosopher is about to say something terribly useful.
              */
 
+
+
             if ((r.nextInt(2) + 1) == 1) {
+
                 // Some monitor ops down here...
+
+                DiningPhilosophers.soMonitor.requestTalk(getTID() - 1);
+
                 talk();
+
+                DiningPhilosophers.soMonitor.endTalk(getTID() - 1);
                 // ...
             }
 
@@ -140,7 +148,9 @@ public class Philosopher extends BaseThread {
                         "You know, true is false and false is true if you think of it",
                         "2 + 2 = 5 for extremely large values of 2...",
                         "If thee cannot speak, thee must be silent",
-                        "My number is " + (getTID() - 1) + ""
+                        "My number is " + (getTID() - 1) + "",
+                        "Roses are red, violets are blue, it don't always be like that but sometimes it do",
+                        "Roses are red, violets are blue, vodka is cheaper than dinner for two"
                 };
 
         System.out.println

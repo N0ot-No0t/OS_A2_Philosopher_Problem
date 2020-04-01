@@ -12,7 +12,7 @@ public class Monitor {
      */
 
     private enum status {eating, hungry, thinking}
-    private enum talkStatus {not_talking,request_talk, talking, end_talking}
+    private enum talkStatus {not_talking, request_talk, talking}
     private boolean someoneIsTalking = false;
 
     private status state[];
@@ -87,22 +87,6 @@ public class Monitor {
 
     }
 
-    private synchronized void testTalk(final int piTID){
-
-        int specialCaseNb = 0;
-
-        //if you are the first philosopher and you check on your left, the neighbor
-        // must be the last philosopher of the array (round table)
-        if (piTID == 0) {
-            specialCaseNb = N;
-        } else {
-            specialCaseNb = piTID;
-        }
-
-
-
-    }
-
     /**
      * Grants request (returns) to eat when both chopsticks/forks are available.
      * Else forces the philosopher to wait()
@@ -161,17 +145,25 @@ public class Monitor {
      * Only one philosopher at a time is allowed to philosophy
      * (while she is not eating).
      */
-    public synchronized void requestTalk() {
+    public synchronized void requestTalk(final int piTID) {
 
-        if(!someoneIsTalking){
+        talkStates[piTID] = talkStatus.request_talk;
+
+        if (!someoneIsTalking) {
             someoneIsTalking = true;
-        }else{
+            talkStates[piTID] = talkStatus.talking;
+        }
+        else {
             try{
-                wait();
+                while (someoneIsTalking) {
+                    wait();
+                }
+
+                someoneIsTalking = true;
+                talkStates[piTID] = talkStatus.talking;
             }catch (InterruptedException ie){
                 DiningPhilosophers.reportException(ie);
             }
-            
         }
 
     }
@@ -180,9 +172,11 @@ public class Monitor {
      * When one philosopher is done talking stuff, others
      * can feel free to start talking.
      */
-    public synchronized void endTalk() {
+    public synchronized void endTalk(final int piTID) {
 
+        talkStates[piTID] = talkStatus.not_talking;
         someoneIsTalking = false;
+        notifyAll();
 
     }
 }
