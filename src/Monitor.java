@@ -46,6 +46,8 @@ public class Monitor {
 
         int specialCaseNb = 0;
 
+        //if you are the first philosopher and you check on your left, the neighbor
+        // must be the last philosopher of the array (round table)
         if (piTID == 0) {
             specialCaseNb = N;
         } else {
@@ -67,17 +69,11 @@ public class Monitor {
 		System.out.println("condition#3: state[(piTID + 1) % N] != status.eating), result: " + (state[(piTID + 1) % N] != status.eating));
 		System.out.println("****\n");*/
 
-        while ((state[(specialCaseNb - 1) % N] != status.eating) && (state[piTID] == status.hungry) && (state[(piTID + 1) % N] != status.eating)) {
+        if ((state[(specialCaseNb - 1) % N] != status.eating) && (state[piTID] == status.hungry) && (state[(piTID + 1) % N] != status.eating)) {
 
             //System.out.println("Inside test method ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Philosopher ["+piTID+"] is eating...");
 
             state[piTID] = status.eating;
-            //notifyAll();
-//			try {
-//				self[piTID].acquire();
-//			}catch (InterruptedException ie){
-//
-//			}
 
         }
 
@@ -87,6 +83,8 @@ public class Monitor {
 
         int specialCaseNb = 0;
 
+        //if you are the first philosopher and you check on your left, the neighbor
+        // must be the last philosopher of the array (round table)
         if (piTID == 0) {
             specialCaseNb = N;
         } else {
@@ -102,13 +100,12 @@ public class Monitor {
      * Else forces the philosopher to wait()
      */
     public synchronized void pickUp(final int piTID) {
-        //SSystem.out.println("piTID: "+piTID+"\n");
+        //System.out.println("piTID: "+piTID+"\n");
 
         state[piTID] = status.hungry;
         testEat(piTID);
         while (state[piTID] != status.eating) {
             try {
-                //self[piTID].wait();
                 wait();
             } catch (InterruptedException ie) {
 
