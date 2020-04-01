@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c1ad09a2-c50d-411d-a7b7-a0f5d1311759" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OS_A2_Philosopher_Problem/DiningPhilosophers.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OS_A2_Philosopher_Problem/DiningPhilosophers.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OS_A2_Philosopher_Problem/Monitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OS_A2_Philosopher_Problem/Monitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OS_A2_Philosopher_Problem/Philosopher.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OS_A2_Philosopher_Problem/Philosopher.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OS_A2_Philosopher_Problem/common/BaseThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OS_A2_Philosopher_Problem/common/BaseThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DiningPhilosophers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DiningPhilosophers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Monitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Monitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Philosopher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Philosopher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/BaseThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/BaseThread.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,8 +33,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Monitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="454">
-              <caret line="138" column="41" lean-forward="true" selection-start-line="138" selection-start-column="41" selection-end-line="138" selection-end-column="41" />
+            <state relative-caret-position="182">
+              <caret line="92" column="34" selection-start-line="92" selection-start-column="34" selection-end-line="92" selection-end-column="34" />
               <folding>
                 <element signature="e#1020#2257#0" />
                 <element signature="e#2568#2582#0" />
@@ -90,7 +82,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-15" />
     <option name="width" value="985" />
     <option name="height" value="1035" />
@@ -104,22 +96,7 @@
     <panes>
       <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="OS_A2_Philosopher_Problem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OS_A2_Philosopher_Problem" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OS_A2_Philosopher_Problem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OS_A2_Philosopher_Problem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -192,10 +169,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6440000" />
+    <option name="totallyTimeSpent" value="6938000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4957507" visible="true" weight="0.12885906" />
@@ -303,8 +280,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Monitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="138" column="41" lean-forward="true" selection-start-line="138" selection-start-column="41" selection-end-line="138" selection-end-column="41" />
+        <state relative-caret-position="182">
+          <caret line="92" column="34" selection-start-line="92" selection-start-column="34" selection-end-line="92" selection-end-column="34" />
           <folding>
             <element signature="e#1020#2257#0" />
             <element signature="e#2568#2582#0" />
