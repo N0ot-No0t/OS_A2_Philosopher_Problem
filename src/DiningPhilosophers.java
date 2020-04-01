@@ -25,7 +25,7 @@ public class DiningPhilosophers {
     public static final int DINING_STEPS = 10;
 
     /**
-     * Our shared monitor for the philosphers to consult
+     * Our shared monitor for the philosophers to consult
      */
     public static Monitor soMonitor = null;
 
