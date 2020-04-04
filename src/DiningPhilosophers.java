@@ -47,7 +47,14 @@ public class DiningPhilosophers {
 
 			if(!input.equals("")){
                 try{
-                    iPhilosophers = Integer.parseInt(input);
+                    do{
+                        iPhilosophers = Integer.parseInt(input);
+                        if(iPhilosophers < 0){
+                            System.out.println(iPhilosophers + " is not a positive integer. Please try again.");
+                            input = read.nextLine();
+                        }
+                    }while (iPhilosophers <= 0);
+
                 }catch (NumberFormatException e){
 
                 }
