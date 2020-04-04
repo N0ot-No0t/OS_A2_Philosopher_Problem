@@ -47,13 +47,16 @@ public class DiningPhilosophers {
 
 			if(!input.equals("")){
                 try{
-                    do{
+
                         iPhilosophers = Integer.parseInt(input);
                         if(iPhilosophers < 0){
-                            System.out.println(iPhilosophers + " is not a positive integer. Please try again.");
-                            input = read.nextLine();
+                            System.out.println("% java DiningPhilosophers -7.a\n" +
+                                    "\""+iPhilosophers+".a\" is not a positive decimal integer\n" +
+                                    "Usage: java DiningPhilosophers "+DEFAULT_NUMBER_OF_PHILOSOPHERS+"\n" +
+                                    "%");
+                            iPhilosophers = DEFAULT_NUMBER_OF_PHILOSOPHERS;
                         }
-                    }while (iPhilosophers <= 0);
+
 
                 }catch (NumberFormatException e){
 
