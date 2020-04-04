@@ -29,11 +29,6 @@ public class DiningPhilosophers {
      */
     public static Monitor soMonitor = null;
 
-    /*
-     * -------
-     * Methods
-     * -------
-     */
 
     /**
      * Main system starts up right here
@@ -41,25 +36,22 @@ public class DiningPhilosophers {
     public static void main(String[] argv) {
         try {
             /*
-             * TODO:
              * Should be settable from the command line
              * or the default if no arguments supplied.
              */
 
             Scanner read = new Scanner(System.in);
             int iPhilosophers = DEFAULT_NUMBER_OF_PHILOSOPHERS;
-//			System.out.println("Input Number of Philosophers");
-//			String input = read.nextLine();
-//
-//			if(input.equals("")){
-//				iPhilosophers = DEFAULT_NUMBER_OF_PHILOSOPHERS;
-//			}else {
-//				try{
-//					iPhilosophers = Integer.parseInt(input);
-//				}catch (NumberFormatException e){
-//
-//				}
-//			}
+			System.out.println("Input Number of Philosophers");
+			String input = read.nextLine();
+
+			if(!input.equals("")){
+                try{
+                    iPhilosophers = Integer.parseInt(input);
+                }catch (NumberFormatException e){
+
+                }
+			}
 
             // Make the monitor aware of how many philosophers there are
             soMonitor = new Monitor(iPhilosophers);

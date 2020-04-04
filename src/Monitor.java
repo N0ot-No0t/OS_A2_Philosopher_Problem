@@ -5,46 +5,45 @@
  * @author Serguei A. Mokhov, mokhov@cs.concordia.ca
  */
 public class Monitor {
-    /*
-     * ------------
-     * Data members
-     * ------------
-     */
 
-    private enum status {eating, hungry, thinking}
-    private enum talkStatus {not_talking, request_talk, talking}
-    private boolean someoneIsTalking = false;
+
+    private enum status {eating, hungry, thinking} //different statuses of the philosophers
+    private enum talkStatus {not_talking, request_talk, talking}//different conversation behavior of the philosophers
+    private boolean someoneIsTalking = false; //this boolean will allow only one philosopher to speak
 
     private status state[];
     private talkStatus talkStates[];
     //private Semaphore self [];
-    private int N;
+    private int N; //will be used to retrieve the number of philosophers
 
     /**
      * Constructor
      */
     public Monitor(int piNumberOfPhilosophers) {
-        // TODO: set appropriate number of chopsticks based on the # of philosophers
 
         state = new status[piNumberOfPhilosophers];
+        //initialise all philosopher to thiking
         for (int i = 0; i < piNumberOfPhilosophers; i++) {
             state[i] = status.thinking;
         }
         talkStates = new talkStatus[piNumberOfPhilosophers];
+        //initialise all conversation behavior of the philosopher to not talking
         for (int i = 0; i < piNumberOfPhilosophers; i++) {
             talkStates[i] = talkStatus.not_talking;
         }
-        //self = new Semaphore[piNumberOfPhilosophers];
-        N = piNumberOfPhilosophers;
+        N = piNumberOfPhilosophers;//getting the number of philosophers
 
     }
 
-    /*
-     * -------------------------------
-     * User-defined monitor procedures
-     * -------------------------------
-     */
 
+
+    /**
+     *
+     * Here, we are checking the states of the neighbors of a given
+     * philosopher to see if they can eat
+     *
+     * @param piTID ID of the philosopher
+     */
     private synchronized void testEat(final int piTID) {
 
         int specialCaseNb = 0;
@@ -56,21 +55,6 @@ public class Monitor {
         } else {
             specialCaseNb = piTID;
         }
-
-		/*System.out.println("\n****");
-		System.out.println("pid:  " + piTID);
-		System.out.println("left neighbor status: (state[(specialCaseNb - 1) % N], left neighbor pid: " + (specialCaseNb - 1) % N + ", result: " + (state[(specialCaseNb - 1) % N]));
-		System.out.println("status that is checked: status.eating, result: " + status.eating);
-		System.out.println("condition#1: (state[(specialCaseNb - 1) % N] != status.eating, result: " + (state[(specialCaseNb - 1) % N] != status.eating));
-		System.out.println("-------");
-		System.out.println("myself status: state[piTID], result: " + state[piTID]);
-		System.out.println("status that is checked: status.hungry, result: " + status.hungry);
-		System.out.println("condition#2: state[piTID] == status.hungry, result: " + (state[piTID] == status.hungry));
-		System.out.println("-------");
-		System.out.println("right neighbor status: state[(piTID + 1) % N], right neighbor pid: " + (piTID + 1) % N + ", result: " + state[(piTID + 1) % N]);
-		System.out.println("status that is checked: status.eating, result: " + status.eating);
-		System.out.println("condition#3: state[(piTID + 1) % N] != status.eating), result: " + (state[(piTID + 1) % N] != status.eating));
-		System.out.println("****\n");*/
 
 
         //This if statement checks two things, if the left and right neighbors of the philosopher that is being test are eating and if the
@@ -149,16 +133,21 @@ public class Monitor {
 
         talkStates[piTID] = talkStatus.request_talk;
 
+        //we check whether or not someone else is talking at the moment
         if (!someoneIsTalking) {
             someoneIsTalking = true;
             talkStates[piTID] = talkStatus.talking;
         }
         else {
             try{
+                //when someone else is already talking, the philosopher that has requested
+                //the right of speech will wait until the other philosopher is done talking
                 while (someoneIsTalking) {
                     wait();
                 }
 
+                //when this point is reached, this means whoever was talking is done and we can obtain
+                //the right of speech
                 someoneIsTalking = true;
                 talkStates[piTID] = talkStatus.talking;
             }catch (InterruptedException ie){
@@ -171,6 +160,9 @@ public class Monitor {
     /**
      * When one philosopher is done talking stuff, others
      * can feel free to start talking.
+     *
+     * This method will simply change the variables to not talking and will let all the philosophers know that
+     * the philosopher that was talking is done.
      */
     public synchronized void endTalk(final int piTID) {
 

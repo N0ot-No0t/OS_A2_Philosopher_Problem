@@ -1,10 +1,9 @@
 import common.BaseThread;
-
 import java.util.Random;
 
 /**
  * Class Philosopher.
- * Outlines main subrutines of our virtual philosopher.
+ * Outlines main subroutines of our virtual philosopher.
  *
  * @author Serguei A. Mokhov, mokhov@cs.concordia.ca
  */
@@ -28,11 +27,9 @@ public class Philosopher extends BaseThread {
         System.out.println("Philosopher [" + (getTID() - 1) + "] is eating...");
 
         try {
-            //while(true){
             yield();
             sleep((long) (Math.random() * TIME_TO_WASTE));
             yield();
-            //}
         } catch (InterruptedException e) {
             System.err.println("Philosopher.eat():");
             DiningPhilosophers.reportException(e);
@@ -55,11 +52,9 @@ public class Philosopher extends BaseThread {
         System.out.println("Philosopher [" + (getTID() - 1) + "] is thinking...");
 
         try {
-            //while(true){
             yield();
             sleep((long) (Math.random() * TIME_TO_WASTE));
             yield();
-            //}
         } catch (InterruptedException e) {
             System.err.println("Philosopher.eat():");
             DiningPhilosophers.reportException(e);
@@ -81,21 +76,9 @@ public class Philosopher extends BaseThread {
     public void talk() {
         System.out.println("Philosopher [" + (getTID() - 1) + "] is talking...");
 
-//		try
-//		{
-        //while(true){
         yield();
-        //sleep((long)(Math.random() * TIME_TO_WASTE));
         saySomething();
         yield();
-        //}
-        //}
-//		catch(InterruptedException e)
-//		{
-//			System.err.println("Philosopher.eat():");
-//			DiningPhilosophers.reportException(e);
-//			System.exit(1);
-//		}
 
         System.out.println("Philosopher [" + (getTID() - 1) + "] is done talking...");
     }
@@ -114,23 +97,20 @@ public class Philosopher extends BaseThread {
             think();
 
             /*
-             * TODO:
              * A decision is made at random whether this particular
              * philosopher is about to say something terribly useful.
              */
 
 
-
+                //a philosopher will have a 50% chance to decide to talk
             if ((r.nextInt(2) + 1) == 1) {
-
-                // Some monitor ops down here...
 
                 DiningPhilosophers.soMonitor.requestTalk(getTID() - 1);
 
                 talk();
 
                 DiningPhilosophers.soMonitor.endTalk(getTID() - 1);
-                // ...
+
             }
 
             yield();
